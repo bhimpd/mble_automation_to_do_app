@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:to_do": "mocha -r ts-node/register tests/to_do/to_do.spec.ts",
+    "test:to_do": "mocha -r ts-node/register tests/to_do.spec.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
