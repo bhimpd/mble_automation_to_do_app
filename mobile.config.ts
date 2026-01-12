@@ -14,6 +14,7 @@ export const appiumConfig = {
         // Stability
         'appium:noReset': true,
         'appium:newCommandTimeout': 300,
+        'appium:waitForIdleTimeout': 5000,
         'appium:autoGrantPermissions': true
     }
 };
