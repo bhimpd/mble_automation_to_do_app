@@ -1,0 +1,31 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Playwright
+playwright-report/
+test-results/
+
+# Appium
+appium.log
+
+# Build output
+dist/
+out/
+
+# Environment files
+.env
+.env.*
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Screenshots / videos
+screenshots/
+videos/
