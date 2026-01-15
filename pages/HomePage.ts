@@ -1,3 +1,4 @@
+import { ChainablePromiseElement } from 'webdriverio';
 import { Helper } from '../utils/helper';
 
 export class HomePage {
@@ -5,39 +6,40 @@ export class HomePage {
     private driver: any;
 
     constructor(driver: any) {
-        this.helper = new Helper();
         this.driver = driver;
-
+        this.helper = new Helper();
     }
 
-    get allListsText() {
+    /* ---------------- LOCATORS ---------------- */
+
+    get allListsText(): ChainablePromiseElement {
         return this.driver.$('//android.widget.TextView[@text="All Lists"]');
     }
 
-    get emptyListText() {
+    get nothingToDoText(): ChainablePromiseElement {
         return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/tvEmpty"]');
     }
 
-    get quickTaskInput() {
+    get quickTaskInput(): ChainablePromiseElement {
         return this.driver.$('//android.widget.EditText[@resource-id="com.splendapps.splendo:id/etQuickTask"]');
     }
 
-    get addTaskButton() {
-        return this.driver.$(
-            '//com.google.android.material.floatingactionbutton.FloatingActionButton[@content-desc="Add Task"]'
-        );
+    get addTaskButton(): ChainablePromiseElement {
+        return this.driver.$('//com.google.android.material.floatingactionbutton.FloatingActionButton[@content-desc="Add Task"]');
     }
 
-    async assertAllListsText(expected: string) {
-        await this.helper.assertText(this.allListsText, expected);
+    /* ---------------- ACTIONS / ASSERTIONS ---------------- */
+
+    async assertAllListsText(expectedText: string) {
+        await this.helper.assertText(this.allListsText, expectedText);
     }
 
-    async assertEmptyListText(expected: string) {
-        await this.helper.assertText(this.emptyListText, expected);
+    async assertNothingToDoText(expectedText: string) {
+        await this.helper.assertText(this.nothingToDoText, expectedText);
     }
 
-    async assertQuickTaskPlaceholder(expected: string) {
-        await this.helper.assertText(this.quickTaskInput, expected);
+    async assertQuickTaskPlaceholder(expectedText: string) {
+        await this.helper.assertText(this.quickTaskInput, expectedText);
     }
 
     async clickAddTask() {
