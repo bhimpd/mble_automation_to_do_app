@@ -17,11 +17,19 @@ describe('Splendo Home Module', function () {
         await quitDriver(driver);
     });
 
-    it('should verify home screen texts and click add task', async () => {
+    it('should verify home screen texts', async () => {
         console.log('Verifying Home Screen');
         await homePage.assertAllListsText('All Lists');
         await homePage.assertNothingToDoText('Nothing to do');
         await homePage.assertQuickTaskPlaceholder('Enter Quick Task Here');
-        await homePage.clickAddTask();
+        // await homePage.clickAddTask();
     });
+
+    it('should assert all lists in dropdown', async () => {
+        await homePage.clickAllListsMenu();
+
+        const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
+        await homePage.assertAllListDropdown(expectedItems);
+    });
+
 });

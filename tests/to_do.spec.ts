@@ -1,6 +1,6 @@
 import { describe, it, before, after } from 'mocha';
 import { strict as assert } from 'assert';
-import { createDriver, quitDriver } from '../fixtures/driverSetup';
+import { createDriver } from '../fixtures/driverSetup';
 
 let driver: any;
 
@@ -11,9 +11,9 @@ describe('Splendo App Launch Test', function () {
         driver = await createDriver();
     });
 
-    after(async () => {
-        await quitDriver(driver);
-    });
+    // after(async () => {
+    //     await quitDriver(driver);
+    // });
 
     it('should open the app and show the main screen and Verify the Visible Text', async () => {
         console.log("Waiting for main screen...");
