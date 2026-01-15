@@ -15,3 +15,19 @@ TypeScript must type-check + compile before execution
 ts-node behaves inconsistently
 Type errors are hidden
 Imports break randomly
+
+
+**Why do we need package.json??**
+
+Node projects cannot work without package.json.
+
+**This file controls:**
+❓ What is this project?
+❓ How do I run it?
+❓ What libraries does it need?
+❓ How should Node treat modules?
+
+**Without this file:**
+No dependency management
+No scripts
+No reproducible automation setup
