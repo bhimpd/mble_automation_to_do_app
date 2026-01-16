@@ -1,9 +1,11 @@
 import { describe, it, beforeEach, afterEach } from "mocha";
 import { createDriver, quitDriver } from "../fixtures/driverSetup";
 import { HomePage } from "../pages/HomePage";
+import { AddTaskPage } from "../pages/AddTaskPage";
 
 let driver: any;
 let homePage: HomePage;
+let addTaskPage: AddTaskPage;
 
 describe('Add Task Module', function () {
     this.timeout(60000);
@@ -11,14 +13,18 @@ describe('Add Task Module', function () {
     beforeEach(async () => {
         driver = await createDriver();
         homePage = new HomePage(driver);
+        addTaskPage = new AddTaskPage(driver);
     });
 
     afterEach(async () => {
         await quitDriver(driver);
     });
 
-    it('should add a task', async () => {
+    it('should assert all the text in the add new task page', async () => {
         await homePage.clickAddTask();
+        await addTaskPage.assertNewTaskName("New Task");
+        await addTaskPage.assertToBeDoneText("What is to be done?");
+        await addTaskPage.assertEnterTaskHereText("Enter Task Here");
 
     });
 });
