@@ -11,9 +11,7 @@ export class BasePage {
      * Generic method to read visible dropdown/menu texts
      */
     async getDropdownTexts(firstVisibleText: string): Promise<string[]> {
-        const firstItem = await this.driver.$(
-            `//android.widget.TextView[@text="${firstVisibleText}"]`
-        );
+        const firstItem = await this.driver.$(`//android.widget.TextView[@text="${firstVisibleText}"]`);
 
         await firstItem.waitForDisplayed({ timeout: 5000 });
 
@@ -33,10 +31,7 @@ export class BasePage {
     /**
      * Generic assertion for any dropdown / menu
      */
-    async assertDropdown(
-        firstVisibleText: string,
-        expectedItems: string[]
-    ): Promise<void> {
+    async assertDropdown(firstVisibleText: string, expectedItems: string[]): Promise<void> {
         console.log('Expected :: ', expectedItems);
 
         const actualItems = await this.getDropdownTexts(firstVisibleText);
@@ -50,11 +45,7 @@ export class BasePage {
 
         for (let i = 0; i < expectedItems.length; i++) {
             if (actualItems[i] !== expectedItems[i]) {
-                throw new Error(
-                    `Mismatch at index ${i}.
-Expected: "${expectedItems[i]}"
-Actual  : "${actualItems[i]}"`
-                );
+                throw new Error(`Mismatch at index ${i}.Expected: "${expectedItems[i]}"Actual  : "${actualItems[i]}"`);
             }
         }
 

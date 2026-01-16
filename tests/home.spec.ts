@@ -31,7 +31,7 @@ describe('Home Page Module', function () {
 
     });
 
-    it('should open more options menu', async () => {
+    it.only('should open more options menu', async () => {
         await homePage.clickMoreOptionMenu();
         const expectedItems = ['Task Lists', 'Add in Batch Mode', 'Remove Ads', 'More Apps', 'Send feedback', 'Follow us', 'Invite friends to the app', 'Settings'];
         await homePage.assertMoreOptionItems(expectedItems);

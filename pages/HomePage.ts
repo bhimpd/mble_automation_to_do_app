@@ -66,8 +66,8 @@ export class HomePage extends BasePage {
         await this.assertDropdown('Task Lists', expectedItems);
     }
 
-    // async clickAddTask() {
-    //     await this.helper.click(this.addTaskButton);
-    // }
+    async clickAddTask() {
+        await this.helper.click(this.addTaskButtonSelector);
+    }
 
 }

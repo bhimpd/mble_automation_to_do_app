@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "automation": "mocha -r ts-node/register tests/home.spec.ts",
+    "all": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "home": "mocha -r ts-node/register tests/home.spec.ts",
+    "add_task": "mocha -r ts-node/register tests/add_task.spec.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
