@@ -12,37 +12,41 @@ export class HomePage {
 
     /* ---------------- LOCATORS ---------------- */
 
-    get allListsText(): ChainablePromiseElement {
+    get allListsTextSelector(): ChainablePromiseElement {
         return this.driver.$('//android.widget.TextView[@text="All Lists"]');
     }
 
-    get nothingToDoText(): ChainablePromiseElement {
+    get nothingToDoTextSelector(): ChainablePromiseElement {
         return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/tvEmpty"]');
     }
 
-    get quickTaskInput(): ChainablePromiseElement {
+    get quickTaskInputSelector(): ChainablePromiseElement {
         return this.driver.$('//android.widget.EditText[@resource-id="com.splendapps.splendo:id/etQuickTask"]');
     }
 
-    get addTaskButton(): ChainablePromiseElement {
+    get addTaskButtonSelector(): ChainablePromiseElement {
         return this.driver.$('//com.google.android.material.floatingactionbutton.FloatingActionButton[@content-desc="Add Task"]');
     }
-    get allListsMenu(): ChainablePromiseElement {
+    get allListsMenuSelector(): ChainablePromiseElement {
         return this.driver.$('android.widget.TextView');
+    }
+
+    get moreOptionMenuSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.ImageView[@content-desc="More options"]');
     }
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertAllListsText(expectedText: string) {
-        await this.helper.assertText(this.allListsText, expectedText);
+        await this.helper.assertText(this.allListsTextSelector, expectedText);
     }
 
     async assertNothingToDoText(expectedText: string) {
-        await this.helper.assertText(this.nothingToDoText, expectedText);
+        await this.helper.assertText(this.nothingToDoTextSelector, expectedText);
     }
 
     async assertQuickTaskPlaceholder(expectedText: string) {
-        await this.helper.assertText(this.quickTaskInput, expectedText);
+        await this.helper.assertText(this.quickTaskInputSelector, expectedText);
     }
 
     // async clickAddTask() {
@@ -50,14 +54,19 @@ export class HomePage {
     // }
 
     async clickAllListsMenu() {
-        await this.helper.click(this.allListsText);
+        await this.helper.click(this.allListsTextSelector);
     }
 
     // Get all dropdown items
     async getAllListItems(): Promise<string[]> {
-        // All items in dropdown
+        // Wait for at least one dropdown item to appear
+        const firstItem = await this.driver.$('//android.widget.TextView[@text="All Lists"]');
+        await firstItem.waitForDisplayed({ timeout: 5000 });
+
+        // Get all dropdown items (narrow the XPath if possible)
         const items: ElementArray = await this.driver.$$('//android.widget.TextView');
         const texts: string[] = [];
+
         for (const item of items) {
             const text = await item.getText();
             texts.push(text.trim());
@@ -68,7 +77,7 @@ export class HomePage {
 
     // Assert dropdown items
     async assertAllListDropdown(expectedItems: string[]) {
-        this.driver.pause(2000);
+        this.driver.pause(5000);
         console.log("Expected Texts :: ", expectedItems);
 
         const actualItems = await this.getAllListItems();
@@ -86,4 +95,8 @@ export class HomePage {
         console.log("All dropdown items match!");
     }
 
+
+    async clickMoreOptionMenu() {
+        await this.helper.click(this.moreOptionMenuSelector);
+    }
 }

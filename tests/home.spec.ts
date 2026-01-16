@@ -5,7 +5,7 @@ import { HomePage } from '../pages/HomePage';
 let driver: any;
 let homePage: HomePage;
 
-describe('Splendo Home Module', function () {
+describe('Home Page Module', function () {
     this.timeout(60000);
 
     beforeEach(async () => {
@@ -28,10 +28,12 @@ describe('Splendo Home Module', function () {
 
         const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
         await homePage.assertAllListDropdown(expectedItems);
+        await homePage.clickAllListsMenu();
+
     });
 
-    // it('should open more options menu', async () => {
-    //     await homePage.clickMoreOptionMenu();
-    // });
+    it('should open more options menu', async () => {
+        await homePage.clickMoreOptionMenu();
+    });
 
 });
