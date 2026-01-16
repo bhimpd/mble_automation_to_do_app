@@ -25,7 +25,6 @@ describe('Home Page Module', function () {
 
     it('should assert all lists in dropdown', async () => {
         await homePage.clickAllListsMenu();
-
         const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
         await homePage.assertAllListDropdown(expectedItems);
         await homePage.clickAllListsMenu();
@@ -34,6 +33,8 @@ describe('Home Page Module', function () {
 
     it('should open more options menu', async () => {
         await homePage.clickMoreOptionMenu();
+        const expectedItems = ['Task Lists', 'Add in Batch Mode', 'Remove Ads', 'More Apps', 'Send feedback', 'Follow us', 'Invite friends to the app', 'Settings'];
+        await homePage.assertMoreOptionItems(expectedItems);
     });
 
 });
