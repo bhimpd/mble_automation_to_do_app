@@ -68,6 +68,7 @@ export class HomePage {
 
     // Assert dropdown items
     async assertAllListDropdown(expectedItems: string[]) {
+        this.driver.pause(2000);
         console.log("Expected Texts :: ", expectedItems);
 
         const actualItems = await this.getAllListItems();
