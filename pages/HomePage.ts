@@ -62,12 +62,17 @@ export class HomePage {
             const text = await item.getText();
             texts.push(text.trim());
         }
+
         return texts;
     }
 
     // Assert dropdown items
     async assertAllListDropdown(expectedItems: string[]) {
+        console.log("Expected Texts :: ", expectedItems);
+
         const actualItems = await this.getAllListItems();
+        console.log("Actual Texts  :: ", actualItems);
+
         if (actualItems.length !== expectedItems.length) {
             throw new Error(`Dropdown length mismatch.... Expected ${expectedItems.length}, Actual ${actualItems.length}`);
         }
