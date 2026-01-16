@@ -25,6 +25,11 @@ describe('Add Task Module', function () {
         await addTaskPage.assertNewTaskName("New Task");
         await addTaskPage.assertToBeDoneText("What is to be done?");
         await addTaskPage.assertEnterTaskHereText("Enter Task Here");
-
+        await addTaskPage.assertDueDateText("Due date");
+        await addTaskPage.assertDateNotSetText("Date not set");
+        await addTaskPage.assertNotificationText("Notifications");
+        await addTaskPage.assertNoNotificationText("No notifications if date not set.");
+        await addTaskPage.assertAddToListText("Add to List");
+        await addTaskPage.assertDefaultText("Default");
     });
 });

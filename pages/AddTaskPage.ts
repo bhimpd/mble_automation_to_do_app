@@ -24,6 +24,31 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.EditText[@resource-id="com.splendapps.splendo:id/edtTaskName"]');
     }
 
+    get dueDateTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/head_due"]');
+    }
+
+    get dateNotSetSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.EditText[@resource-id="com.splendapps.splendo:id/edtDueD"]');
+    }
+
+    get notificationTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/txtNotfInfoTitle"]');
+    }
+
+    get noNotificationTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/txtNotfInfoLine0"]');
+    }
+
+    get addToListTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/head_list"]');
+    }
+
+    get defaultTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@text="Default"]');
+    }
+
+
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -37,6 +62,30 @@ export class AddTaskPage {
 
     async assertEnterTaskHereText(expectedText: string) {
         await this.helper.assertText(this.enterTaskHereSelector, expectedText);
+    }
+
+    async assertDueDateText(expectedText: string) {
+        await this.helper.assertText(this.dueDateTextSelector, expectedText);
+    }
+
+    async assertDateNotSetText(expectedText: string) {
+        await this.helper.assertText(this.dateNotSetSelector, expectedText);
+    }
+
+    async assertNotificationText(expectedText: string) {
+        await this.helper.assertText(this.notificationTextSelector, expectedText);
+    }
+
+    async assertNoNotificationText(expectedText: string) {
+        await this.helper.assertText(this.noNotificationTextSelector, expectedText);
+    }
+
+    async assertAddToListText(expectedText: string) {
+        await this.helper.assertText(this.addToListTextSelector, expectedText);
+    }
+
+    async assertDefaultText(expectedText: string) {
+        await this.helper.assertText(this.defaultTextSelector, expectedText);
     }
 
 
