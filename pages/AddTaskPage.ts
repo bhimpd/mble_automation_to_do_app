@@ -48,7 +48,13 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.TextView[@text="Default"]');
     }
 
+    get saveTaskButtonSelector(): ChainablePromiseElement {
+        return this.driver.$('//com.google.android.material.floatingactionbutton.FloatingActionButton[@content-desc="Save Task"]');
+    }
 
+    get validationMessageSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/snackbar_text"]');
+    }
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -89,4 +95,11 @@ export class AddTaskPage {
     }
 
 
+    async clickSaveTaskButton() {
+        await this.saveTaskButtonSelector.click();
+    }
+
+    async assertValidationMessage(expectedText: string) {
+        await this.helper.assertText(this.validationMessageSelector, expectedText);
+    }
 }

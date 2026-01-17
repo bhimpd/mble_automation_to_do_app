@@ -10,6 +10,8 @@ describe('Home Page Module', function () {
 
     beforeEach(async () => {
         driver = await createDriver();
+        await driver.terminateApp('com.splendapps.splendo');
+        await driver.activateApp('com.splendapps.splendo');
         homePage = new HomePage(driver);
     });
 
@@ -31,7 +33,7 @@ describe('Home Page Module', function () {
 
     });
 
-    it.only('should open more options menu', async () => {
+    it('should open more options menu', async () => {
         await homePage.clickMoreOptionMenu();
         const expectedItems = ['Task Lists', 'Add in Batch Mode', 'Remove Ads', 'More Apps', 'Send feedback', 'Follow us', 'Invite friends to the app', 'Settings'];
         await homePage.assertMoreOptionItems(expectedItems);
