@@ -56,6 +56,14 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/snackbar_text"]');
     }
 
+    get todaysDateSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.view.View[@content-desc="18 January 2026"]');
+    }
+
+    get okButtonSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@resource-id="android:id/button1"]');
+    }
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertNewTaskName(expectedText: string) {
@@ -106,5 +114,17 @@ export class AddTaskPage {
 
     async enterNewTaskName(taskName: string) {
         await this.helper.type(this.enterTaskHereSelector, taskName);
+    }
+
+    async clickDueDate() {
+        await this.helper.click(this.dateNotSetSelector);
+    }
+
+    async clickTodaysDate() {
+        await this.helper.click(this.todaysDateSelector);
+    }
+
+    async clickOkButton() {
+        await this.helper.click(this.okButtonSelector);
     }
 }

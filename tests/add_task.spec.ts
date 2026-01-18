@@ -45,6 +45,9 @@ describe('Add Task Module', function () {
     it.only('should add the new task with all the data and assert the created task', async () => {
         await homePage.clickAddTask();
         await addTaskPage.enterNewTaskName("Test Task Testing");
+        await addTaskPage.clickDueDate();
+        await addTaskPage.clickTodaysDate();
+        await addTaskPage.clickOkButton();
         // await addTaskPage.clickSaveTaskButton();
 
     });
