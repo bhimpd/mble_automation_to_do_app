@@ -102,4 +102,9 @@ export class AddTaskPage {
     async assertValidationMessage(expectedText: string) {
         await this.helper.assertText(this.validationMessageSelector, expectedText);
     }
+
+
+    async enterNewTaskName(taskName: string) {
+        await this.helper.type(this.enterTaskHereSelector, taskName);
+    }
 }
