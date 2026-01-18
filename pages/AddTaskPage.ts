@@ -72,6 +72,18 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/txtNotfInfoLine0"]');
     }
 
+    get hourSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc="12"]');
+    }
+
+
+    get minuteSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc="0"]');
+    }
+
+    get individualNotificationTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/txtNotfInfoLine1"]');
+    }
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -151,6 +163,18 @@ export class AddTaskPage {
 
     async assertDaySummaryText(expectedText: string) {
         await this.helper.assertText(this.daySummaryTextSelector, expectedText);
+    }
+
+    async clickHourSelector() {
+        await this.helper.click(this.hourSelector);
+    }
+
+    async clickMinuteSelector() {
+        await this.helper.click(this.minuteSelector);
+    }
+
+    async assertIndividualNotificationText(expectedText: string) {
+        await this.helper.assertText(this.individualNotificationTextSelector, expectedText);
     }
 
 

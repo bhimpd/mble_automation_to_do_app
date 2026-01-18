@@ -51,8 +51,13 @@ describe('Add Task Module', function () {
         await addTaskPage.assertTodaysDate("Today");
         await addTaskPage.assertTimeNotSetText("Time not set (all day)");
         await addTaskPage.clickTimeNotSet();
-        // await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
-        // await addTaskPage.clickSaveTaskButton();
+        await addTaskPage.clickHourSelector();
+        await addTaskPage.clickMinuteSelector();
+        await addTaskPage.clickOkButton();
+        await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
+
+        await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
+        await addTaskPage.clickSaveTaskButton();
 
     });
 
