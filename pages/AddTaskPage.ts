@@ -64,6 +64,15 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.Button[@resource-id="android:id/button1"]');
     }
 
+    get timeNotSetTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.EditText[@resource-id="com.splendapps.splendo:id/edtDueT"]');
+    }
+
+    get daySummaryTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/txtNotfInfoLine0"]');
+    }
+
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertNewTaskName(expectedText: string) {
@@ -127,4 +136,22 @@ export class AddTaskPage {
     async clickOkButton() {
         await this.helper.click(this.okButtonSelector);
     }
+
+    async assertTodaysDate(expectedText: string) {
+        await this.helper.assertText(this.dateNotSetSelector, expectedText);
+    }
+
+    async assertTimeNotSetText(expectedText: string) {
+        await this.helper.assertText(this.timeNotSetTextSelector, expectedText);
+    }
+
+    async clickTimeNotSet() {
+        await this.helper.click(this.timeNotSetTextSelector);
+    }
+
+    async assertDaySummaryText(expectedText: string) {
+        await this.helper.assertText(this.daySummaryTextSelector, expectedText);
+    }
+
+
 }
