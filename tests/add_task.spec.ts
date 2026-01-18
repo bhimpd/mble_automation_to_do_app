@@ -42,7 +42,7 @@ describe('Add Task Module', function () {
         await addTaskPage.assertValidationMessage("Enter task at first");
     });
 
-    it.only('should add the new task with all the data and assert the created task', async () => {
+    it('should add the new task with all the data and assert the created task', async () => {
         await homePage.clickAddTask();
         await addTaskPage.enterNewTaskName("Test Task Testing");
         await addTaskPage.clickDueDate();
