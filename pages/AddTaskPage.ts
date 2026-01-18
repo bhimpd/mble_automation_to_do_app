@@ -85,6 +85,21 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/txtNotfInfoLine1"]');
     }
 
+    get searchIconSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@content-desc="Search"]');
+    }
+
+
+    get searchInputSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.AutoCompleteTextView[@resource-id="com.splendapps.splendo:id/search_src_text"]');
+    }
+
+    get searchResultSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/task_name" and @text="Test Task Testing"]');
+    }
+
+
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertNewTaskName(expectedText: string) {
@@ -177,5 +192,16 @@ export class AddTaskPage {
         await this.helper.assertText(this.individualNotificationTextSelector, expectedText);
     }
 
+    async clickSearchIcon() {
+        await this.helper.click(this.searchIconSelector);
+    }
+
+    async enterSearchText(searchText: string) {
+        await this.helper.type(this.searchInputSelector, searchText);
+    }
+
+    async assertSearchResult(expectedText: string) {
+        await this.helper.assertText(this.searchResultSelector, expectedText);
+    }
 
 }

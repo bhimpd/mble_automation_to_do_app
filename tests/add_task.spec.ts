@@ -58,6 +58,9 @@ describe('Add Task Module', function () {
 
         await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
         await addTaskPage.clickSaveTaskButton();
+        await addTaskPage.clickSearchIcon();
+        await addTaskPage.enterSearchText("Test Task Testing");
+        await addTaskPage.assertSearchResult("Test Task Testing");
 
     });
 
