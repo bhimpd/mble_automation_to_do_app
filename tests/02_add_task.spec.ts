@@ -3,6 +3,9 @@ import { createDriver, quitDriver } from "../fixtures/driverSetup";
 import { HomePage } from "../pages/HomePage";
 import { AddTaskPage } from "../pages/AddTaskPage";
 
+import { captureScreenshot } from '../utils/screenshot';
+
+
 let driver: any;
 let homePage: HomePage;
 let addTaskPage: AddTaskPage;
@@ -19,7 +22,11 @@ describe('Add Task Module', function () {
 
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
+        // ✅ TAKE SCREENSHOT ONLY IF TEST FAILED
+        if (this.currentTest?.state === 'failed') {
+            await captureScreenshot(driver, this.currentTest.title);
+        }
         await quitDriver(driver);
     });
 

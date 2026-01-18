@@ -1,6 +1,7 @@
 import { describe, it, beforeEach, afterEach } from 'mocha';
 import { createDriver, quitDriver } from '../fixtures/driverSetup';
 import { HomePage } from '../pages/HomePage';
+import { captureScreenshot } from '../utils/screenshot';
 
 let driver: any;
 let homePage: HomePage;
@@ -15,7 +16,12 @@ describe('Home Page Module', function () {
         homePage = new HomePage(driver);
     });
 
-    afterEach(async () => {
+    afterEach(async function () {
+        // ✅ TAKE SCREENSHOT ONLY IF TEST FAILED
+        if (this.currentTest?.state === 'failed') {
+            await captureScreenshot(driver, this.currentTest.title);
+        }
+
         await quitDriver(driver);
     });
 
