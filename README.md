@@ -179,3 +179,34 @@ Node projects cannot work without package.json.
 No dependency management
 No scripts
 No reproducible automation setup
+
+
+
+Allure Report Setup & Usage (Mobile Automation – Appium + Mocha)
+
+This project uses Allure Reports to generate rich and interactive test execution reports for mobile automation.
+
+📦 Install Allure Dependencies
+npm install --save-dev allure-mocha allure-commandline
+
+📜 Package.json Configuration
+"scripts": {
+  "all": "mocha -r ts-node/register allure-mocha tests/**/*.spec.ts",
+  "home": "mocha -r ts-node/register allure-mocha tests/home.spec.ts",
+  "add_task": "mocha -r ts-node/register allure-mocha tests/add_task.spec.ts",
+  "allure:generate": "allure generate allure-results --clean -o allure-report",
+  "allure:open": "allure open allure-report"
+}
+
+▶️ Run Tests and Generate Allure Results
+npm run all
+
+After execution, an allure-results/ folder will be automatically created.
+
+📈 Generate Allure Report
+npm run allure:generate
+
+After execution, an allure-report/ folder will be automatically created.
+
+📊 Open Allure Report
+npm run allure:open
