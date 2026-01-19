@@ -58,7 +58,10 @@ describe('Add Task Module', function () {
         await addTaskPage.enterNewTaskName(taskName);
 
         await addTaskPage.clickDueDate();
-        await addTaskPage.clickTodaysDate();
+
+        const today = new Date().getDate(); // gets 1-31
+        await addTaskPage.selectTodayDate(today);
+
         await addTaskPage.clickOkButton();
         await addTaskPage.assertTodaysDate("Today");
         await addTaskPage.assertTimeNotSetText("Time not set (all day)");
