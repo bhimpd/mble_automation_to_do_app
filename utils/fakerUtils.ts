@@ -6,5 +6,5 @@ export function generateTaskName(): string {
 
 export function generateListName(): string {
     // Generates something like "My Fresh List" or "My Electronics List"
-    return `My ${faker.commerce.department()} List`;
+    return `My ${faker.commerce.department()}`;
 }

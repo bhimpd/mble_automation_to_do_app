@@ -118,6 +118,11 @@ export class HomePage extends BasePage {
         await this.helper.type(this.enterListNameSelector, listName);
     }
 
+    async assertListNameAtTop(expectedText: string) {
+        const element = await this.driver.$(`//android.widget.TextView[@text="${expectedText}"]`);
+        await this.helper.assertText(element, expectedText);
+    }
+
 
 
 }

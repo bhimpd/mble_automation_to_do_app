@@ -48,7 +48,6 @@ describe('Home Page Module', function () {
 
     it.only('should add new list', async () => {
         await homePage.clickAllListsMenu();
-        this.timeout(1000);
         await homePage.clickNewListText();
         await homePage.assertNewListTextTitle('New List');
         await homePage.assertEnterListName('Enter List Name');
@@ -59,5 +58,10 @@ describe('Home Page Module', function () {
         const listName = generateListName();
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
+
+        await homePage.assertListNameAtTop(listName);
+        const listNameAssertion = "List " + listName + " is empty";
+        await homePage.assertNothingToDoText(listNameAssertion);
+
     });
 });
