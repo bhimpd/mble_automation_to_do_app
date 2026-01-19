@@ -61,16 +61,16 @@ describe('Add Task Module', function () {
 
         const today = new Date().getDate(); // gets 1-31
         await addTaskPage.selectTodayDate(today);
-
         await addTaskPage.clickOkButton();
         await addTaskPage.assertTodaysDate("Today");
+
         await addTaskPage.assertTimeNotSetText("Time not set (all day)");
         await addTaskPage.clickTimeNotSet();
         await addTaskPage.clickHourSelector();
         await addTaskPage.clickMinuteSelector();
         await addTaskPage.clickOkButton();
-        await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
 
+        await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
         await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
         await addTaskPage.clickSaveTaskButton();
         await addTaskPage.clickSearchIcon();
