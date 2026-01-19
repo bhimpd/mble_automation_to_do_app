@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "all": "mocha --reporter spec -r ts-node/register -r allure-mocha tests/**/*.spec.ts",
-    "home": "mocha --reporter spec -r ts-node/register -r allure-mocha tests/01_home.spec.ts",
-    "add_task": "mocha --reporter spec -r ts-node/register -r allure-mocha tests/02_add_task.spec.ts",
+    "all": "mocha -r ts-node/register -r allure-mocha tests/**/*.spec.ts --reporter-options targetDir=allure-results",
+    "home": "mocha -r ts-node/register -r allure-mocha tests/01_home.spec.ts --reporter-options targetDir=allure-results",
+    "add_task": "mocha -r ts-node/register -r allure-mocha tests/02_add_task.spec.ts --reporter-options targetDir=allure-results",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report"
   },
@@ -19,6 +19,7 @@
     "@types/mocha": "^10.0.10",
     "allure-commandline": "^2.36.0",
     "allure-mocha": "^3.4.5",
+    "cross-env": "^10.1.0",
     "mocha": "^11.7.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
