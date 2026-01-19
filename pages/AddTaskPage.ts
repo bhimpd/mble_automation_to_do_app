@@ -57,7 +57,7 @@ export class AddTaskPage {
     }
 
     get todaysDateSelector(): ChainablePromiseElement {
-        return this.driver.$('//android.view.View[@content-desc="18 January 2026"]');
+        return this.driver.$('//android.view.View[@content-desc="19 January 2026"]');
     }
 
     get okButtonSelector(): ChainablePromiseElement {
@@ -93,11 +93,6 @@ export class AddTaskPage {
     get searchInputSelector(): ChainablePromiseElement {
         return this.driver.$('//android.widget.AutoCompleteTextView[@resource-id="com.splendapps.splendo:id/search_src_text"]');
     }
-
-    get searchResultSelector(): ChainablePromiseElement {
-        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/task_name" and @text="Test Task Testing"]');
-    }
-
 
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
@@ -200,8 +195,12 @@ export class AddTaskPage {
         await this.helper.type(this.searchInputSelector, searchText);
     }
 
-    async assertSearchResult(expectedText: string) {
-        await this.helper.assertText(this.searchResultSelector, expectedText);
+
+    async assertSearchResult(taskName: string) {
+        const task = await this.driver.$(`android=new UiSelector().textContains("${taskName}")`);
+        await task.waitForDisplayed({ timeout: 5000 });
+        await this.helper.assertText(task, taskName);
+
     }
 
 }

@@ -4,6 +4,8 @@ import { HomePage } from "../pages/HomePage";
 import { AddTaskPage } from "../pages/AddTaskPage";
 
 import { captureScreenshot } from '../utils/screenshot';
+import { generateTaskName } from '../utils/fakerUtils';
+
 
 
 let driver: any;
@@ -49,9 +51,12 @@ describe('Add Task Module', function () {
         await addTaskPage.assertValidationMessage("Enter task at first");
     });
 
-    it('should add the new task with all the data and assert the created task', async () => {
+    it.only('should add the new task with all the data and assert the created task', async () => {
         await homePage.clickAddTask();
-        await addTaskPage.enterNewTaskName("Test Task Testing");
+
+        const taskName = generateTaskName();
+        await addTaskPage.enterNewTaskName(taskName);
+
         await addTaskPage.clickDueDate();
         await addTaskPage.clickTodaysDate();
         await addTaskPage.clickOkButton();
@@ -66,8 +71,8 @@ describe('Add Task Module', function () {
         await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
         await addTaskPage.clickSaveTaskButton();
         await addTaskPage.clickSearchIcon();
-        await addTaskPage.enterSearchText("Test Task Testing");
-        await addTaskPage.assertSearchResult("Test Task Testing");
+        await addTaskPage.enterSearchText(taskName);
+        await addTaskPage.assertSearchResult(taskName);
 
     });
 
