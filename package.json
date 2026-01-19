@@ -15,6 +15,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
     "@types/mocha": "^10.0.10",
     "allure-commandline": "^2.36.0",
     "allure-mocha": "^3.4.5",

@@ -36,6 +36,26 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.ImageView[@content-desc="More options"]');
     }
 
+    get newListTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/navLineName" and @text="New List"]');
+    }
+
+    get newListTextTitleSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/alertTitle"]');
+    }
+
+    get enterListNameSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.EditText[@text="Enter List Name"]');
+    }
+
+    get addButtonSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@resource-id="android:id/button1"]');
+    }
+
+    get cancelButtonSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@resource-id="android:id/button2"]');
+    }
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertAllListsText(expectedText: string) {
@@ -69,5 +89,35 @@ export class HomePage extends BasePage {
     async clickAddTask() {
         await this.helper.click(this.addTaskButtonSelector);
     }
+
+    async clickNewListText() {
+        await this.helper.click(this.newListTextSelector);
+    }
+
+    async assertNewListTextTitle(expectedText: string) {
+        await this.helper.assertText(this.newListTextTitleSelector, expectedText);
+    }
+
+    async assertEnterListName(expectedText: string) {
+        await this.helper.assertText(this.enterListNameSelector, expectedText);
+    }
+
+
+    async assertAddText(expectedText: string) {
+        await this.helper.assertText(this.addButtonSelector, expectedText);
+    }
+
+    async assertCancelText(expectedText: string) {
+        await this.helper.assertText(this.cancelButtonSelector, expectedText);
+    }
+    async clickAddButton() {
+        await this.helper.click(this.addButtonSelector);
+    }
+
+    async enterListName(listName: string) {
+        await this.helper.type(this.enterListNameSelector, listName);
+    }
+
+
 
 }

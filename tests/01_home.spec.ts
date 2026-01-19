@@ -2,6 +2,7 @@ import { describe, it, beforeEach, afterEach } from 'mocha';
 import { createDriver, quitDriver } from '../fixtures/driverSetup';
 import { HomePage } from '../pages/HomePage';
 import { captureScreenshot } from '../utils/screenshot';
+import { generateListName } from '../utils/fakerUtils';
 
 let driver: any;
 let homePage: HomePage;
@@ -45,5 +46,18 @@ describe('Home Page Module', function () {
         await homePage.assertMoreOptionItems(expectedItems);
     });
 
+    it.only('should add new list', async () => {
+        await homePage.clickAllListsMenu();
+        this.timeout(1000);
+        await homePage.clickNewListText();
+        await homePage.assertNewListTextTitle('New List');
+        await homePage.assertEnterListName('Enter List Name');
+        await homePage.assertAddText('ADD');
+        await homePage.assertCancelText('CANCEL');
 
+
+        const listName = generateListName();
+        await homePage.enterListName(listName);
+        await homePage.clickAddButton();
+    });
 });
