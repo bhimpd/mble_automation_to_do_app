@@ -35,7 +35,7 @@ describe('Home Page Module', function () {
     it('should assert all lists in dropdown', async () => {
         await homePage.clickAllListsMenu();
         const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
-        await homePage.assertAllListDropdown(expectedItems);
+        await homePage.assertDropDownAllLists(expectedItems);
         await homePage.clickAllListsMenu();
 
     });
@@ -46,7 +46,7 @@ describe('Home Page Module', function () {
         await homePage.assertMoreOptionItems(expectedItems);
     });
 
-    it.only('should add new list', async () => {
+    it('should add new list', async () => {
         await homePage.clickAllListsMenu();
         await homePage.clickNewListText();
         await homePage.assertNewListTextTitle('New List');

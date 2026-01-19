@@ -123,6 +123,35 @@ export class HomePage extends BasePage {
         await this.helper.assertText(element, expectedText);
     }
 
+    // HomePage.ts
+    // ------------------------------
+    async assertDropDownAllLists(expectedDefaultLists: string[]) {
+        // Wait for dropdown items to be displayed
+        const firstItem = await this.driver.$('//android.widget.TextView[@text="All Lists"]');
+        await firstItem.waitForDisplayed({ timeout: 5000 });
+
+        // Get all items in the dropdown
+        const items: ElementArray = await this.driver.$$('//android.widget.TextView');
+        const actualItems: string[] = [];
+
+        for (const item of items) {
+            const text = await item.getText();
+            actualItems.push(text.trim());
+        }
+
+        console.log("Expected Default Lists :: ", expectedDefaultLists);
+        console.log("Actual Dropdown Items  :: ", actualItems);
+
+        // ✅ Assert that all default lists exist in the dropdown
+        expectedDefaultLists.forEach(expected => {
+            if (!actualItems.includes(expected)) {
+                throw new Error(`Expected default list "${expected}" not found in dropdown`);
+            }
+        });
+
+        console.log("All default lists are present!");
+    }
+
 
 
 }
