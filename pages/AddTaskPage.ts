@@ -91,6 +91,14 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.AutoCompleteTextView[@resource-id="com.splendapps.splendo:id/search_src_text"]');
     }
 
+    get taskListsTitleSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/title" and @text="Task Lists"]');
+    }
+
+    get hamburgerMenuSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@content-desc="New List"]');
+    }
+
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -204,6 +212,14 @@ export class AddTaskPage {
         await task.waitForDisplayed({ timeout: 5000 });
         await this.helper.assertText(task, taskName);
 
+    }
+
+    async clickTaskLists() {
+        await this.helper.click(this.taskListsTitleSelector);
+    }
+
+    async clickHamburgerMenu() {
+        await this.helper.click(this.hamburgerMenuSelector);
     }
 
 }
