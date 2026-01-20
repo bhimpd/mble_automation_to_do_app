@@ -46,7 +46,7 @@ describe('Home Page Module', function () {
         await homePage.assertMoreOptionItems(expectedItems);
     });
 
-    it('should add new list', async () => {
+    it('should add new task  list', async () => {
         await homePage.clickAllListsMenu();
         await homePage.clickNewListText();
         await homePage.assertNewListTextTitle('New List');
@@ -65,7 +65,7 @@ describe('Home Page Module', function () {
 
     });
 
-    it.only('should creat the task from the 3dots menu', async () => {
+    it('should create the new task list from the 3dots menu', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
