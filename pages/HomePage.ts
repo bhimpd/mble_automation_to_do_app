@@ -56,6 +56,14 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.Button[@resource-id="android:id/button2"]');
     }
 
+    get taskListsTitleSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/title" and @text="Task Lists"]');
+    }
+
+    get hamburgerMenuSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@content-desc="New List"]');
+    }
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertAllListsText(expectedText: string) {
@@ -152,6 +160,11 @@ export class HomePage extends BasePage {
         console.log("All default lists are present!");
     }
 
+    async clickTaskLists() {
+        await this.helper.click(this.taskListsTitleSelector);
+    }
 
-
+    async clickHamburgerMenu() {
+        await this.helper.click(this.hamburgerMenuSelector);
+    }
 }

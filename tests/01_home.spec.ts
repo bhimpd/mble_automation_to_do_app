@@ -64,4 +64,21 @@ describe('Home Page Module', function () {
         await homePage.assertNothingToDoText(listNameAssertion);
 
     });
+
+    it.only('should creat the task from the 3dots menu', async () => {
+        await homePage.clickMoreOptionMenu();
+        await homePage.clickTaskLists();
+        await homePage.clickHamburgerMenu();
+        await homePage.assertNewListTextTitle('New List');
+        await homePage.assertEnterListName('Enter List Name');
+        await homePage.assertAddText('ADD');
+        await homePage.assertCancelText('CANCEL');
+
+
+        const listName = generateListName();
+        await homePage.enterListName(listName);
+        await homePage.clickAddButton();
+
+    })
+
 });
