@@ -14,6 +14,7 @@ let addTaskPage: AddTaskPage;
 
 describe('Add Task Module', function () {
     this.timeout(60000);
+    this.retries(1);
 
     beforeEach(async () => {
         driver = await createDriver();

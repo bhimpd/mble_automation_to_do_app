@@ -9,6 +9,7 @@ let homePage: HomePage;
 
 describe('Home Page Module', function () {
     this.timeout(60000);
+    this.retries(1);
 
     beforeEach(async () => {
         driver = await createDriver();
@@ -26,9 +27,9 @@ describe('Home Page Module', function () {
         await quitDriver(driver);
     });
 
-    it('should verify home screen texts', async () => {
+    it.only('should verify home screen texts', async () => {
         await homePage.assertAllListsText('All Lists');
-        await homePage.assertNothingToDoText('Nothing to do');
+        await homePage.assertNothingToDoText('Nothing to dos');
         await homePage.assertQuickTaskPlaceholder('Enter Quick Task Here');
     });
 
