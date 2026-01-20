@@ -79,5 +79,9 @@ describe('Add Task Module', function () {
 
     });
 
+    it.only('should creat the task from the 3dots menu', async () => {
+        await homePage.clickMoreOptionMenu();
+    })
+
 
 });
