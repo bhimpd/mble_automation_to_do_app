@@ -27,7 +27,7 @@ describe('Home Page Module', function () {
         await quitDriver(driver);
     });
 
-    it.only('should verify home screen texts', async () => {
+    it('should verify home screen texts', async () => {
         await homePage.assertAllListsText('All Lists');
         await homePage.assertNothingToDoText('Nothing to dos');
         await homePage.assertQuickTaskPlaceholder('Enter Quick Task Here');
@@ -36,7 +36,7 @@ describe('Home Page Module', function () {
     it('should assert all lists in dropdown', async () => {
         await homePage.clickAllListsMenu();
         const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
-        await homePage.assertDropDownAllLists(expectedItems);
+        await homePage.assertAllListDropdown(expectedItems);
         await homePage.clickAllListsMenu();
 
     });
