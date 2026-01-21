@@ -66,7 +66,7 @@ describe('Home Page Module', function () {
 
     });
 
-    it('should create the new task list from the 3dots menu', async () => {
+    it.only('should create the new task list from the 3dots menu', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
@@ -79,7 +79,7 @@ describe('Home Page Module', function () {
         const listName = generateListName();
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
-
+        await homePage.getTaskLists();
     })
 
 });

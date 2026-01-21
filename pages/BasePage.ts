@@ -51,4 +51,26 @@ export class BasePage {
 
         console.log('✅ All dropdown items match!');
     }
+
+
+    //get the task list
+    async getTaskLists() {
+        const items: ElementArray = await this.driver.$$('android=new UiSelector().resourceId("com.splendapps.splendo:id/list_name")');
+        const texts: string[] = [];
+
+        for (const item of items) {
+            const text = (await item.getText()).trim();
+            if (text.length > 0) {
+                texts.push(text);
+            }
+        }
+        console.log('Task Lists :: ', texts);
+        return texts;
+    }
+
+    async assertTaskList(expectedItems: string[]) {
+
+    }
+
+
 }
