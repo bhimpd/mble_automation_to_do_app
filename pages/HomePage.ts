@@ -76,6 +76,10 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.Button[@resource-id="android:id/button1"]');
     }
 
+    get editListInputValueSelector(): ChainablePromiseElement {
+        return this.driver.$('android.widget.EditText');
+    }
+
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -186,5 +190,13 @@ export class HomePage extends BasePage {
         await this.helper.assertText(this.saveTextSelector, expectedText);
     }
 
+
+    async enterEditListInputValue(listName: string) {
+        await this.helper.type(this.editListInputValueSelector, listName);
+    }
+
+    async clickSaveButton() {
+        await this.helper.click(this.saveTextSelector);
+    }
 
 }

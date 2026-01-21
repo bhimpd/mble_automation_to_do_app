@@ -101,10 +101,14 @@ describe('Home Page Module', function () {
         await homePage.assertSaveText('SAVE');
         await homePage.assertCancelText('CANCEL');
 
+        const updatedListName = listName + " updated";
+        await homePage.enterEditListInputValue(updatedListName);
+        await homePage.clickSaveButton();
+        await homePage.assertNewlyCreatedTask(updatedListName);
+        await homePage.clickBackButton();
+        await homePage.clickAllListsMenu();
+        await homePage.assertTaskNameFromDropdown(updatedListName);
 
-        // await homePage.clickBackButton();
-        // await homePage.clickAllListsMenu();
-        // await homePage.assertTaskNameFromDropdown(listName);
     })
 
 });
