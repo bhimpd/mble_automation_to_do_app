@@ -140,4 +140,8 @@ export class HomePage extends BasePage {
     async clickHamburgerMenu() {
         await this.helper.click(this.hamburgerMenuSelector);
     }
+
+    async assertNewlyCreatedTask(expectedTaskName: string) {
+        await this.assertTaskList(expectedTaskName);
+    }
 }

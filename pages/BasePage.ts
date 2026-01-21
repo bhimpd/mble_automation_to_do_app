@@ -64,13 +64,20 @@ export class BasePage {
                 texts.push(text);
             }
         }
-        console.log('Task Lists :: ', texts);
         return texts;
     }
 
-    async assertTaskList(expectedItems: string[]) {
+    async assertTaskList(expectedTaskName: string) {
+        const actualItems = await this.getTaskLists();
+        console.log('Actual   :: ', actualItems);
+
+        if (actualItems.includes(expectedTaskName)) {
+            console.log('✅ Task list found!');
+        } else {
+            throw new Error(`Task list "${expectedTaskName}" not found`);
+        }
+
+
 
     }
-
-
 }

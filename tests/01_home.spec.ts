@@ -79,7 +79,7 @@ describe('Home Page Module', function () {
         const listName = generateListName();
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
-        await homePage.getTaskLists();
+        await homePage.assertNewlyCreatedTask(listName);
     })
 
 });
