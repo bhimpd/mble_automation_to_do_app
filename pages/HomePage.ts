@@ -64,6 +64,11 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.Button[@content-desc="New List"]');
     }
 
+    get backButtonSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.ImageButton[@content-desc="Navigate up"]');
+    }
+
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertAllListsText(expectedText: string) {
@@ -143,5 +148,10 @@ export class HomePage extends BasePage {
 
     async assertNewlyCreatedTask(expectedTaskName: string) {
         await this.assertTaskList(expectedTaskName);
+    }
+
+
+    async clickBackButton() {
+        await this.clickNavigateUpButton(this.backButtonSelector);
     }
 }

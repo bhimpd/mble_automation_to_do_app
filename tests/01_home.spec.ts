@@ -80,6 +80,7 @@ describe('Home Page Module', function () {
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
         await homePage.assertNewlyCreatedTask(listName);
+        await homePage.clickBackButton();
     })
 
 });

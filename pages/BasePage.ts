@@ -1,10 +1,19 @@
-import { ElementArray } from 'webdriverio';
+import { ChainablePromiseElement, ElementArray } from "webdriverio";
 
 export class BasePage {
     protected driver: any;
 
     constructor(driver: any) {
         this.driver = driver;
+    }
+
+
+    /* ---------------- LOCATORS ---------------- */
+
+    async clickNavigateUpButton(element: ChainablePromiseElement) {
+        await element.waitForDisplayed({ timeout: 10000 });
+        await element.click();
+        console.log("Clicked Back Button....!!!!")
     }
 
     /**
@@ -76,8 +85,5 @@ export class BasePage {
         } else {
             throw new Error(`Task list "${expectedTaskName}" not found`);
         }
-
-
-
     }
 }
