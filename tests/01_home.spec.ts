@@ -97,6 +97,10 @@ describe('Home Page Module', function () {
         await homePage.assertNewlyCreatedTask(listName);
         await homePage.clickEditForList(listName);
 
+        await homePage.assertEditListText('Edit List');
+        await homePage.assertSaveText('SAVE');
+        await homePage.assertCancelText('CANCEL');
+
 
         // await homePage.clickBackButton();
         // await homePage.clickAllListsMenu();

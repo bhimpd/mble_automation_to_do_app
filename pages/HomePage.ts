@@ -68,6 +68,14 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.ImageButton[@content-desc="Navigate up"]');
     }
 
+    get editListTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/alertTitle"]');
+    }
+
+    get saveTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@resource-id="android:id/button1"]');
+    }
+
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -168,6 +176,14 @@ export class HomePage extends BasePage {
 
         await editIcon.waitForDisplayed({ timeout: 10000 });
         await editIcon.click();
+    }
+
+    async assertEditListText(expectedText: string) {
+        await this.helper.assertText(this.editListTextSelector, expectedText);
+    }
+
+    async assertSaveText(expectedText: string) {
+        await this.helper.assertText(this.saveTextSelector, expectedText);
     }
 
 
