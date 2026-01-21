@@ -86,4 +86,15 @@ export class BasePage {
             throw new Error(`Task list "${expectedTaskName}" not found`);
         }
     }
+
+    async assertTaskNameAtTop(expectedTaskName: string) {
+        const actualItems = await this.getDropdownTexts('All Lists');
+        console.log('Actual List in the DropDown ALL Lists :: ', actualItems);
+
+        if (actualItems.includes(expectedTaskName)) {
+            console.log('✅ Task list found at top!');
+        } else {
+            throw new Error(`Task list "${expectedTaskName}" not found at top`);
+        }
+    }
 }

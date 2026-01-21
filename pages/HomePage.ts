@@ -154,4 +154,8 @@ export class HomePage extends BasePage {
     async clickBackButton() {
         await this.clickNavigateUpButton(this.backButtonSelector);
     }
+
+    async assertTaskNameFromDropdown(expectedTaskName: string) {
+        await this.assertTaskNameAtTop(expectedTaskName);
+    }
 }

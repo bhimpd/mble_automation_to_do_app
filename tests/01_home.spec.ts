@@ -37,8 +37,6 @@ describe('Home Page Module', function () {
         await homePage.clickAllListsMenu();
         const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
         await homePage.assertAllListDropdown(expectedItems);
-        await homePage.clickAllListsMenu();
-
     });
 
     it('should open more options menu', async () => {
@@ -81,6 +79,8 @@ describe('Home Page Module', function () {
         await homePage.clickAddButton();
         await homePage.assertNewlyCreatedTask(listName);
         await homePage.clickBackButton();
+        await homePage.clickAllListsMenu();
+        await homePage.assertTaskNameFromDropdown(listName);
     })
 
 });
