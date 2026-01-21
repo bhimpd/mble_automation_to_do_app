@@ -136,7 +136,6 @@ export class HomePage extends BasePage {
         await this.helper.assertText(element, expectedText);
     }
 
-    // HomePage.ts
 
     async clickTaskLists() {
         await this.helper.click(this.taskListsTitleSelector);
@@ -158,4 +157,18 @@ export class HomePage extends BasePage {
     async assertTaskNameFromDropdown(expectedTaskName: string) {
         await this.assertTaskNameAtTop(expectedTaskName);
     }
+
+
+    async clickEditForList(listName: string) {
+        const editIcon = await this.driver.$(
+            `//android.widget.TextView[@text="${listName}"]` +
+            `/ancestor::android.widget.LinearLayout[@resource-id="com.splendapps.splendo:id/list_item"]` +
+            `//android.widget.ImageView[@content-desc="Edit"]`
+        );
+
+        await editIcon.waitForDisplayed({ timeout: 10000 });
+        await editIcon.click();
+    }
+
+
 }

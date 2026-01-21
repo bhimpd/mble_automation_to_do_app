@@ -9,7 +9,7 @@ let homePage: HomePage;
 
 describe('Home Page Module', function () {
     this.timeout(60000);
-    this.retries(1);
+    // this.retries(1);
 
     beforeEach(async () => {
         driver = await createDriver();
@@ -45,7 +45,7 @@ describe('Home Page Module', function () {
         await homePage.assertMoreOptionItems(expectedItems);
     });
 
-    it.only('should add new task  list and assert new task list at homePage Task Lists DropDown and inside the 3 dots Task Lists as well', async () => {
+    it('should add new task  list and assert new task list at homePage Task Lists DropDown and inside the 3 dots Task Lists as well', async () => {
         await homePage.clickAllListsMenu();
         await homePage.clickNewListText();
         await homePage.assertNewListTextTitle('New List');
@@ -84,6 +84,23 @@ describe('Home Page Module', function () {
         await homePage.clickBackButton();
         await homePage.clickAllListsMenu();
         await homePage.assertTaskNameFromDropdown(listName);
+    });
+
+    it.only('should create new task list from the 3-dots menu, Update the list name and assert the updated list name', async () => {
+        await homePage.clickMoreOptionMenu();
+        await homePage.clickTaskLists();
+        await homePage.clickHamburgerMenu();
+
+        const listName = generateListName();
+        await homePage.enterListName(listName);
+        await homePage.clickAddButton();
+        await homePage.assertNewlyCreatedTask(listName);
+        await homePage.clickEditForList(listName);
+
+
+        // await homePage.clickBackButton();
+        // await homePage.clickAllListsMenu();
+        // await homePage.assertTaskNameFromDropdown(listName);
     })
 
 });
