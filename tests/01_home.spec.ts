@@ -45,7 +45,7 @@ describe('Home Page Module', function () {
         await homePage.assertMoreOptionItems(expectedItems);
     });
 
-    it('should add new task  list', async () => {
+    it.only('should add new task  list and assert new task list at homePage Task Lists DropDown and inside the 3 dots Task Lists as well', async () => {
         await homePage.clickAllListsMenu();
         await homePage.clickNewListText();
         await homePage.assertNewListTextTitle('New List');
@@ -61,10 +61,13 @@ describe('Home Page Module', function () {
         await homePage.assertListNameAtTop(listName);
         const listNameAssertion = "List " + listName + " is empty";
         await homePage.assertNothingToDoText(listNameAssertion);
+        await homePage.clickMoreOptionMenu();
+        await homePage.clickTaskLists();
+        await homePage.assertNewlyCreatedTask(listName);
 
     });
 
-    it.only('should create the new task list from the 3dots menu', async () => {
+    it('should create the new task list from the 3dots menu, assert newly created task list  there and at HomePage Task Lists', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
