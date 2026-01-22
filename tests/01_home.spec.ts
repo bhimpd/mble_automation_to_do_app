@@ -27,25 +27,25 @@ describe('Home Page Module', function () {
         await quitDriver(driver);
     });
 
-    it('should verify home screen texts', async () => {
+    it('should display expected task lists on the home screen', async () => {
         await homePage.assertAllListsText('All Lists');
         await homePage.assertNothingToDoText('Nothing to dos');
         await homePage.assertQuickTaskPlaceholder('Enter Quick Task Here');
     });
 
-    it('should assert all lists in dropdown', async () => {
+    it('should show all task lists in the task list dropdown', async () => {
         await homePage.clickAllListsMenu();
         const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
         await homePage.assertAllListDropdown(expectedItems);
     });
 
-    it('should open more options menu and assert the lists', async () => {
+    it('should display all task lists in the more options menu', async () => {
         await homePage.clickMoreOptionMenu();
         const expectedItems = ['Task Lists', 'Add in Batch Mode', 'Remove Ads', 'Send feedback', 'Follow us', 'Invite friends to the app', 'Settings'];
         await homePage.assertMoreOptionItems(expectedItems);
     });
 
-    it('should add new task  list and assert new task list at homePage Task Lists DropDown and inside the 3 dots Task Lists as well', async () => {
+    it('should create a new task list and display it across the app', async () => {
         await homePage.clickAllListsMenu();
         await homePage.clickNewListText();
         await homePage.assertNewListTextTitle('New List');
@@ -68,7 +68,7 @@ describe('Home Page Module', function () {
 
     });
 
-    it('should create the new task list from the 3dots menu, assert newly created task list  there and at HomePage Task Lists', async () => {
+    it('should allow creating a task list from the more options menu', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
@@ -87,7 +87,7 @@ describe('Home Page Module', function () {
         await homePage.assertTaskNameFromDropdown(listName);
     });
 
-    it('should create new task list from the 3-dots menu, Update the list name and assert the updated list name', async () => {
+    it('should allow renaming an existing task list', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
@@ -112,7 +112,7 @@ describe('Home Page Module', function () {
 
     })
 
-    it('should create the new task list from the 3dots menu, assert newly created task list,delete it and assert the list is deleted', async () => {
+    it('should delete an existing task list and remove it from the app', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();

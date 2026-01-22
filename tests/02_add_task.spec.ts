@@ -33,7 +33,7 @@ describe('Add Task Module', function () {
         await quitDriver(driver);
     });
 
-    it('should assert all the text in the add new task page', async () => {
+    it('should display all required fields on the Add New Task screen', async () => {
         await homePage.clickAddTask();
         await addTaskPage.assertNewTaskName("New Task");
         await addTaskPage.assertToBeDoneText("What is to be done?");
@@ -46,13 +46,13 @@ describe('Add Task Module', function () {
         await addTaskPage.assertDefaultText("Default");
     });
 
-    it('should show validation message when adding a task without a name', async () => {
+    it('should show a validation error when saving a task without a name', async () => {
         await homePage.clickAddTask();
         await addTaskPage.clickSaveTaskButton();
         await addTaskPage.assertValidationMessage("Enter task at first");
     });
 
-    it('should add the new task with all the data and assert the created task', async () => {
+    it('should create a new task with due date and notification successfully', async () => {
         await homePage.clickAddTask();
 
         const taskName = generateTaskName();
