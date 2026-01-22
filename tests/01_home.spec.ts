@@ -57,6 +57,7 @@ describe('Home Page Module', function () {
         const listName = generateListName();
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
+        await homePage.assertListAddedText('List Added');
 
         await homePage.assertListNameAtTop(listName);
         const listNameAssertion = "List " + listName + " is empty";
@@ -111,7 +112,7 @@ describe('Home Page Module', function () {
 
     })
 
-    it.only('should create the new task list from the 3dots menu, assert newly created task list,delete it and assert the list is deleted', async () => {
+    it('should create the new task list from the 3dots menu, assert newly created task list,delete it and assert the list is deleted', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
@@ -124,7 +125,7 @@ describe('Home Page Module', function () {
         await homePage.assertDeleteText('DELETE');
         await homePage.assertDeleteMessage('All tasks from the list will also be deleted.');
         await homePage.clickDeleteButton();
-
+        await homePage.assertListDeletedText('List Deleted');
 
     });
 

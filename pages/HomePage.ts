@@ -92,6 +92,15 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.TextView[@resource-id="android:id/message"]');
     }
 
+    get listDeletedTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Toast[@text="List Deleted"]');
+    }
+
+    get listAddedTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Toast[@text="List Added"]');
+    }
+
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertAllListsText(expectedText: string) {
@@ -125,6 +134,11 @@ export class HomePage extends BasePage {
     async clickAddTask() {
         await this.helper.click(this.addTaskButtonSelector);
     }
+
+    async assertListAddedText(expectedText: string) {
+        await this.helper.assertText(this.listAddedTextSelector, expectedText);
+    }
+
 
     async clickNewListText() {
         await this.helper.click(this.newListTextSelector);
@@ -239,6 +253,9 @@ export class HomePage extends BasePage {
         await this.helper.click(this.deleteTextSelector);
     }
 
+    async assertListDeletedText(expectedText: string) {
+        await this.helper.assertText(this.listDeletedTextSelector, expectedText);
+    }
 
 
 }
