@@ -39,7 +39,7 @@ describe('Home Page Module', function () {
         await homePage.assertAllListDropdown(expectedItems);
     });
 
-    it('should open more options menu', async () => {
+    it('should open more options menu and assert the lists', async () => {
         await homePage.clickMoreOptionMenu();
         const expectedItems = ['Task Lists', 'Add in Batch Mode', 'Remove Ads', 'Send feedback', 'Follow us', 'Invite friends to the app', 'Settings'];
         await homePage.assertMoreOptionItems(expectedItems);
@@ -120,6 +120,10 @@ describe('Home Page Module', function () {
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
         await homePage.clickDeleteForList(listName);
+        await homePage.assertAreYouSureText('Are you sure?');
+        await homePage.assertDeleteText('DELETE');
+        await homePage.assertDeleteMessage('All tasks from the list will also be deleted.');
+        await homePage.clickDeleteButton();
 
 
     });

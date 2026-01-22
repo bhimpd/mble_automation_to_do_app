@@ -80,6 +80,17 @@ export class HomePage extends BasePage {
         return this.driver.$('android.widget.EditText');
     }
 
+    get areYouSureTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/alertTitle"]');
+    }
+
+    get deleteTextSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@resource-id="android:id/button1"]');
+    }
+
+    get deleteMessageSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="android:id/message"]');
+    }
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -210,5 +221,24 @@ export class HomePage extends BasePage {
         await deleteIcon.waitForDisplayed({ timeout: 10000 });
         await deleteIcon.click();
     }
+
+
+    async assertAreYouSureText(expectedText: string) {
+        await this.helper.assertText(this.areYouSureTextSelector, expectedText);
+    }
+
+    async assertDeleteText(expectedText: string) {
+        await this.helper.assertText(this.deleteTextSelector, expectedText);
+    }
+
+    async assertDeleteMessage(expectedText: string) {
+        await this.helper.assertText(this.deleteMessageSelector, expectedText);
+    }
+
+    async clickDeleteButton() {
+        await this.helper.click(this.deleteTextSelector);
+    }
+
+
 
 }
