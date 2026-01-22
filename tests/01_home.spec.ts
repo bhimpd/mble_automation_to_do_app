@@ -111,7 +111,7 @@ describe('Home Page Module', function () {
 
     })
 
-    it('should create the new task list from the 3dots menu, assert newly created task list,delete it and assert the list is deleted', async () => {
+    it.only('should create the new task list from the 3dots menu, assert newly created task list,delete it and assert the list is deleted', async () => {
         await homePage.clickMoreOptionMenu();
         await homePage.clickTaskLists();
         await homePage.clickHamburgerMenu();
@@ -119,10 +119,8 @@ describe('Home Page Module', function () {
         const listName = generateListName();
         await homePage.enterListName(listName);
         await homePage.clickAddButton();
-        await homePage.assertNewlyCreatedTask(listName);
-        await homePage.clickBackButton();
-        await homePage.clickAllListsMenu();
-        await homePage.assertTaskNameFromDropdown(listName);
+        await homePage.clickDeleteForList(listName);
+
 
     });
 

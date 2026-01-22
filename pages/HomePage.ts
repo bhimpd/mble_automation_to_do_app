@@ -199,4 +199,16 @@ export class HomePage extends BasePage {
         await this.helper.click(this.saveTextSelector);
     }
 
+
+    async clickDeleteForList(listName: string) {
+        const deleteIcon = await this.driver.$(
+            `//android.widget.TextView[@text="${listName}"]` +
+            `/ancestor::android.widget.LinearLayout[@resource-id="com.splendapps.splendo:id/list_item"]` +
+            `//android.widget.ImageView[@content-desc="Delete"]`
+        );
+
+        await deleteIcon.waitForDisplayed({ timeout: 10000 });
+        await deleteIcon.click();
+    }
+
 }
