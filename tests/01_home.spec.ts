@@ -3,6 +3,8 @@ import { createDriver, quitDriver } from '../fixtures/driverSetup';
 import { HomePage } from '../pages/HomePage';
 import { captureScreenshot } from '../utils/screenshot';
 import { generateListName } from '../utils/fakerUtils';
+import { generateTaskName } from '../utils/fakerUtils';
+
 
 let driver: any;
 let homePage: HomePage;
@@ -127,6 +129,12 @@ describe('Home Page Module', function () {
         await homePage.clickDeleteButton();
         await homePage.assertListDeletedText('List Deleted');
 
+    });
+
+    it.only('should create the quick task', async () => {
+        await homePage.clickQuickTaskButton();
+        const taskName = generateTaskName();
+        await homePage.enterQuickTaskName(taskName);
     });
 
 });

@@ -257,5 +257,14 @@ export class HomePage extends BasePage {
         await this.helper.assertText(this.listDeletedTextSelector, expectedText);
     }
 
+    async clickQuickTaskButton() {
+        await this.helper.click(this.quickTaskInputSelector);
+    }
+
+    async enterQuickTaskName(taskName: string) {
+        await this.helper.type(this.quickTaskInputSelector, taskName);
+    }
+
+
 
 }
