@@ -134,7 +134,7 @@ describe('Home Page Module', function () {
 
     });
 
-    it.only('should create the quick task', async () => {
+    it('should create the quick task', async () => {
         await homePage.clickQuickTaskButton();
         const taskName = generateTaskName();
         await homePage.enterQuickTaskName(taskName);
