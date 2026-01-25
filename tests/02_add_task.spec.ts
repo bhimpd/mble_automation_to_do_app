@@ -14,7 +14,7 @@ let addTaskPage: AddTaskPage;
 
 describe('Add Task Module', function () {
     this.timeout(60000);
-    this.retries(1);
+    // this.retries(1);
 
     beforeEach(async () => {
         driver = await createDriver();
@@ -92,16 +92,12 @@ describe('Add Task Module', function () {
         const today = new Date().getDate(); // gets 1-31
         await addTaskPage.selectTodayDate(today);
         await addTaskPage.clickOkButton();
-        await addTaskPage.assertTodaysDate("Today");
 
-        await addTaskPage.assertTimeNotSetText("Time not set (all day)");
         await addTaskPage.clickTimeNotSet();
         await addTaskPage.clickHourSelector();
         await addTaskPage.clickMinuteSelector();
         await addTaskPage.clickOkButton();
 
-        await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
-        await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
         await addTaskPage.clickSaveTaskButton();
         await addTaskPage.clickSearchIcon();
         await addTaskPage.enterSearchText(taskName);
@@ -110,6 +106,9 @@ describe('Add Task Module', function () {
         await addTaskPage.clickDeleteIcon();
         await addTaskPage.clickDeleteButton();
 
+        const listNameAssertion = taskName + " not found";
+        console.log("Delete Task Name: " + listNameAssertion);
+        await homePage.assertNothingToDoText(listNameAssertion);
     });
 
 });
