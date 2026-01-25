@@ -107,6 +107,8 @@ describe('Add Task Module', function () {
         await addTaskPage.enterSearchText(taskName);
         await addTaskPage.assertSearchResult(taskName);
         await addTaskPage.clickSearchedTask();
+        await addTaskPage.clickDeleteIcon();
+        await addTaskPage.clickDeleteButton();
 
     });
 

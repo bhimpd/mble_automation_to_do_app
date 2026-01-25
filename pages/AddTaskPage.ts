@@ -95,6 +95,10 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.RelativeLayout[@resource-id="com.splendapps.splendo:id/task_list_item"]');
     }
 
+    get deleteIconSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.Button[@content-desc="Delete Task"]');
+    }
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertNewTaskName(expectedText: string) {
@@ -213,4 +217,12 @@ export class AddTaskPage {
         await this.helper.click(this.searchedTaskSelector);
     }
 
+    async clickDeleteIcon() {
+        await this.helper.click(this.deleteIconSelector);
+    }
+
+
+    async clickDeleteButton() {
+        await this.helper.click(this.okButtonSelector);
+    }
 }
