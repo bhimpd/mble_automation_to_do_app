@@ -32,6 +32,10 @@ export class HomePage extends BasePage {
         return this.driver.$('android.widget.TextView');
     }
 
+    get quickTaskButtonSaveSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.ImageView[@content-desc="Add Task"]');
+    }
+
     get moreOptionMenuSelector(): ChainablePromiseElement {
         return this.driver.$('//android.widget.ImageView[@content-desc="More options"]');
     }
@@ -265,6 +269,9 @@ export class HomePage extends BasePage {
         await this.helper.type(this.quickTaskInputSelector, taskName);
     }
 
+    async clickQuickTaskSaveButton() {
+        await this.helper.click(this.quickTaskButtonSaveSelector);
+    }
 
 
 }

@@ -4,10 +4,12 @@ import { HomePage } from '../pages/HomePage';
 import { captureScreenshot } from '../utils/screenshot';
 import { generateListName } from '../utils/fakerUtils';
 import { generateTaskName } from '../utils/fakerUtils';
+import { AddTaskPage } from '../pages/AddTaskPage';
 
 
 let driver: any;
 let homePage: HomePage;
+let addTaskPage: AddTaskPage;
 
 describe('Home Page Module', function () {
     this.timeout(60000);
@@ -18,6 +20,7 @@ describe('Home Page Module', function () {
         await driver.terminateApp('com.splendapps.splendo');
         await driver.activateApp('com.splendapps.splendo');
         homePage = new HomePage(driver);
+        addTaskPage = new AddTaskPage(driver);
     });
 
     afterEach(async function () {
@@ -135,6 +138,10 @@ describe('Home Page Module', function () {
         await homePage.clickQuickTaskButton();
         const taskName = generateTaskName();
         await homePage.enterQuickTaskName(taskName);
+        await homePage.clickQuickTaskSaveButton();
+        await addTaskPage.clickSearchIcon();
+        await addTaskPage.enterSearchText(taskName);
+        await addTaskPage.assertSearchResult(taskName);
     });
 
 });
