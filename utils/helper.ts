@@ -11,6 +11,7 @@ export class Helper {
     }
 
     async click(element: ChainablePromiseElement) {
+        console.log("Clicking on element: ", element);
         await element.click();
     }
 

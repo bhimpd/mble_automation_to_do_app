@@ -91,6 +91,10 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.AutoCompleteTextView[@resource-id="com.splendapps.splendo:id/search_src_text"]');
     }
 
+    get searchedTaskSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.RelativeLayout[@resource-id="com.splendapps.splendo:id/task_list_item"]');
+    }
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertNewTaskName(expectedText: string) {
@@ -205,6 +209,8 @@ export class AddTaskPage {
 
     }
 
-
+    async clickSearchedTask() {
+        await this.helper.click(this.searchedTaskSelector);
+    }
 
 }
