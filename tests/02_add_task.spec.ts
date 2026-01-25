@@ -46,6 +46,10 @@ describe('Add Task Module', function () {
         await addTaskPage.assertDefaultText("Default");
     });
 
+    it('should create the quick task', async () => {
+
+    });
+
     it('should show a validation error when saving a task without a name', async () => {
         await homePage.clickAddTask();
         await addTaskPage.clickSaveTaskButton();
