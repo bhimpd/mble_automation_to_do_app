@@ -58,7 +58,7 @@ devices.forEach(device => {
             await addTaskPage.assertValidationMessage("Enter task at first");
         });
 
-        it.skip('should create a new task with due date and notification successfully', async () => {
+        it('should create a new task with due date and notification successfully', async () => {
             await homePage.clickAddTask();
 
             const taskName = generateTaskName();
@@ -86,7 +86,7 @@ devices.forEach(device => {
 
         });
 
-        it.skip('should create a new task with due date and notification successfully ,Delete it and assert deleted successfully...', async () => {
+        it('should create a new task with due date and notification successfully ,Delete it and assert deleted successfully...', async () => {
             await homePage.clickAddTask();
 
             const taskName = generateTaskName();

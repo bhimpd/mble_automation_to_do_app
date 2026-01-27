@@ -148,5 +148,11 @@ devices.forEach(device => {
             await addTaskPage.assertSearchResult(taskName);
         });
 
+
+        it("should create the task in the batch mode", async () => {
+
+        });
+
+
     });
 });
