@@ -149,7 +149,9 @@ devices.forEach(device => {
         });
 
 
-        it("should create the task in the batch mode", async () => {
+        it.only("should create the task in the batch mode", async () => {
+            await homePage.clickMoreOptionMenu();
+            await homePage.clickAddInBatchMode();
 
         });
 

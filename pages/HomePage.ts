@@ -104,6 +104,11 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.Toast[@text="List Added"]');
     }
 
+    get addInBatchModeSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/title" and @text="Add in Batch Mode"]');
+    }
+
+
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -274,4 +279,7 @@ export class HomePage extends BasePage {
     }
 
 
+    async clickAddInBatchMode() {
+        await this.helper.click(this.addInBatchModeSelector);
+    }
 }
