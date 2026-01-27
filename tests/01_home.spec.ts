@@ -152,6 +152,9 @@ devices.forEach(device => {
         it.only("should create the task in the batch mode", async () => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickAddInBatchMode();
+            await homePage.assertWhatIsToBeDoneText('What is to be done?');
+            const taskName = generateTaskName();
+            await homePage.enterMultipleTaskName(taskName);
 
         });
 

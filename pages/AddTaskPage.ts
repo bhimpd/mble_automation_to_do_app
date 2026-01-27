@@ -7,7 +7,7 @@ export class AddTaskPage {
     private driver: any;
 
     constructor(driver: any) {
-        this.helper = new Helper();
+        this.helper = new Helper(driver);
         this.driver = driver;
     }
 

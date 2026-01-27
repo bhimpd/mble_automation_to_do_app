@@ -8,7 +8,7 @@ export class HomePage extends BasePage {
 
     constructor(driver: any) {
         super(driver);
-        this.helper = new Helper();
+        this.helper = new Helper(driver);
     }
 
     /* ---------------- LOCATORS ---------------- */
@@ -108,7 +108,13 @@ export class HomePage extends BasePage {
         return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/title" and @text="Add in Batch Mode"]');
     }
 
+    get whatIsToBeDoneSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@resource-id="com.splendapps.splendo:id/head_task_name"]');
+    }
 
+    get multipleTaskNameInputSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.EditText[@resource-id="com.splendapps.splendo:id/edtTaskName"]');
+    }
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -281,5 +287,13 @@ export class HomePage extends BasePage {
 
     async clickAddInBatchMode() {
         await this.helper.click(this.addInBatchModeSelector);
+    }
+
+    async assertWhatIsToBeDoneText(expectedText: string) {
+        await this.helper.assertText(this.whatIsToBeDoneSelector, expectedText);
+    }
+
+    async enterMultipleTaskName(taskName: string) {
+        await this.helper.typeAndEnter(this.multipleTaskNameInputSelector, taskName);
     }
 }

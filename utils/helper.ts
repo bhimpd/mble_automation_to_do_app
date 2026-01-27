@@ -2,6 +2,14 @@ import { ChainablePromiseElement } from 'webdriverio';
 import { strict as assert } from 'assert';
 
 export class Helper {
+
+    protected driver: any;
+
+    constructor(driver: any) {
+        this.driver = driver;
+    }
+
+
     async assertText(element: ChainablePromiseElement, expectedText: string) {
         const actualText = await element.getText();
         console.log("Actual Text :: ", actualText);
@@ -18,4 +26,15 @@ export class Helper {
     async type(element: ChainablePromiseElement, value: string) {
         await element.setValue(value);
     }
+
+    async typeAndEnter(element: ChainablePromiseElement, value: string) {
+        await element.addValue(value);
+        await this.driver.pressKeyCode(66);
+        await element.addValue(value);
+        await this.driver.pressKeyCode(66);
+        await element.addValue(value);
+        await this.driver.pressKeyCode(66);
+
+    }
+
 }
