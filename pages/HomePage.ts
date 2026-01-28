@@ -293,7 +293,7 @@ export class HomePage extends BasePage {
         await this.helper.assertText(this.whatIsToBeDoneSelector, expectedText);
     }
 
-    async enterMultipleTaskName(taskName: string) {
-        await this.helper.typeAndEnter(this.multipleTaskNameInputSelector, taskName);
+    async enterMultipleTaskName(taskNames: string[]) {
+        await this.helper.typeMultilineTasks(this.multipleTaskNameInputSelector, taskNames);
     }
 }

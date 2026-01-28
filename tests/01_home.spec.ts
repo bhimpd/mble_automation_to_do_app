@@ -153,8 +153,13 @@ devices.forEach(device => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickAddInBatchMode();
             await homePage.assertWhatIsToBeDoneText('What is to be done?');
-            const taskName = generateTaskName();
-            await homePage.enterMultipleTaskName(taskName);
+            const tasks = [
+                generateTaskName(),
+                generateTaskName(),
+                generateTaskName()
+            ];
+
+            await homePage.enterMultipleTaskName(tasks);
 
         });
 

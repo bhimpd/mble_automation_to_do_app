@@ -27,14 +27,22 @@ export class Helper {
         await element.setValue(value);
     }
 
-    async typeAndEnter(element: ChainablePromiseElement, value: string) {
-        await element.addValue(value);
-        await this.driver.pressKeyCode(66);
-        await element.addValue(value);
-        await this.driver.pressKeyCode(66);
-        await element.addValue(value);
-        await this.driver.pressKeyCode(66);
 
+    async typeMultilineTasks(
+        element: ChainablePromiseElement,
+        values: string[]
+    ) {
+        await element.click(); // focus input
+
+        for (let i = 0; i < values.length; i++) {
+            await element.addValue(values[i]);
+
+            // Add newline EXCEPT after last item
+            if (i < values.length - 1) {
+                await element.addValue('\n');
+            }
+        }
     }
+
 
 }
