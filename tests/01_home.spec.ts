@@ -149,7 +149,7 @@ devices.forEach(device => {
         });
 
 
-        it.only("should create the task in the batch mode", async () => {
+        it.only("should create the task in the batch mode and save successfully without filling other data.", async () => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickAddInBatchMode();
             await homePage.assertWhatIsToBeDoneText('What is to be done?');
@@ -161,6 +161,8 @@ devices.forEach(device => {
 
             await homePage.enterMultipleTasks(tasks);
             await addTaskPage.clickSaveTaskButton();
+            await addTaskPage.clickSearchIcon();
+            await addTaskPage.searchAndAssertTasks(tasks);
         });
 
 

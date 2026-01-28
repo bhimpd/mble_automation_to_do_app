@@ -225,4 +225,16 @@ export class AddTaskPage {
     async clickDeleteButton() {
         await this.helper.click(this.okButtonSelector);
     }
+
+    async clearSearch() {
+        await this.searchInputSelector.clearValue();
+    }
+
+    async searchAndAssertTasks(tasks: string[]) {
+        for (const task of tasks) {
+            await this.clearSearch();
+            await this.enterSearchText(task);
+            await this.assertSearchResult(task);
+        }
+    }
 }
