@@ -159,7 +159,7 @@ devices.forEach(device => {
                 generateTaskName()
             ];
 
-            await homePage.enterMultipleTaskName(tasks);
+            await homePage.enterMultipleTasks(tasks);
 
         });
 

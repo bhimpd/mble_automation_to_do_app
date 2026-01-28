@@ -293,7 +293,11 @@ export class HomePage extends BasePage {
         await this.helper.assertText(this.whatIsToBeDoneSelector, expectedText);
     }
 
-    async enterMultipleTaskName(taskNames: string[]) {
-        await this.helper.typeMultilineTasks(this.multipleTaskNameInputSelector, taskNames);
+    async enterMultipleTasks(tasks: string[]) {
+        const input = this.multipleTaskNameInputSelector;
+        // Join array with new lines: "Task1\nTask2\nTask3"
+        const batchText = tasks.join('\n') + '\n';
+        await input.addValue(batchText);
     }
+
 }
