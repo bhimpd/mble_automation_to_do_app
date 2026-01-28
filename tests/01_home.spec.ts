@@ -160,7 +160,7 @@ devices.forEach(device => {
             ];
 
             await homePage.enterMultipleTasks(tasks);
-
+            await addTaskPage.clickSaveTaskButton();
         });
 
 
