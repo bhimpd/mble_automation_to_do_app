@@ -249,5 +249,33 @@ export class AddTaskPage extends BasePage {
         await this.assertDropdown('Default', expectedItems);
     }
 
+    async selectRandomTaskList(excludeItems: string[] = []): Promise<string> {
+        // Get all visible dropdown texts
+        const items = await this.getDropdownTexts('Default');
+
+        // Filter excluded items if any
+        const selectableItems = items.filter(
+            item => !excludeItems.includes(item)
+        );
+
+        if (selectableItems.length === 0) {
+            throw new Error('No selectable dropdown items found');
+        }
+
+        // Pick random item
+        const randomIndex = Math.floor(Math.random() * selectableItems.length);
+        const selectedItem = selectableItems[randomIndex];
+
+        // Click the selected item
+        const element = await this.driver.$(
+            `//android.widget.TextView[@text="${selectedItem}"]`
+        );
+        await element.click();
+
+        console.log(`✅ Randomly selected task list: ${selectedItem}`);
+
+        return selectedItem;
+    }
+
 
 }

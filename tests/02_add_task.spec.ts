@@ -142,6 +142,9 @@ devices.forEach(device => {
             const expectedItems = ['Default', 'Personal', 'Shopping', 'Wishlist', 'Work'];
             await addTaskPage.assertAllListDropdown(expectedItems);
 
+            const selectedList = await addTaskPage.selectRandomTaskList(['Default']);
+            console.log("FUCking selected Task List ::: ", selectedList);
+
             // await addTaskPage.clickSaveTaskButton();
             // await addTaskPage.clickSearchIcon();
             // await addTaskPage.enterSearchText(taskName);
