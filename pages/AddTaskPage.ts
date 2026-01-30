@@ -99,6 +99,10 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.Button[@content-desc="Delete Task"]');
     }
 
+    get defaultTextListSelector(): ChainablePromiseElement {
+        return this.driver.$('//android.widget.TextView[@text="Default"]');
+    }
+
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
     async assertNewTaskName(expectedText: string) {
@@ -237,4 +241,10 @@ export class AddTaskPage {
             await this.assertSearchResult(task);
         }
     }
+
+    async clickDefaultTextListDropDown() {
+        await this.helper.click(this.defaultTextListSelector);
+    }
+
+
 }

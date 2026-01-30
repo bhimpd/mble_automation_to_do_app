@@ -137,6 +137,9 @@ devices.forEach(device => {
 
             await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
             await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
+            await addTaskPage.clickDefaultTextListDropDown();
+
+
             // await addTaskPage.clickSaveTaskButton();
             // await addTaskPage.clickSearchIcon();
             // await addTaskPage.enterSearchText(taskName);
