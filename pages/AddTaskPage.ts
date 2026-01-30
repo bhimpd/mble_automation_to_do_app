@@ -1,12 +1,14 @@
 import { ChainablePromiseElement, ElementArray } from "webdriverio";
 import { Helper } from '../utils/helper';
+import { BasePage } from "./BasePage";
 
 
-export class AddTaskPage {
+export class AddTaskPage extends BasePage {
     private helper: Helper;
-    private driver: any;
+    public driver: any;
 
     constructor(driver: any) {
+        super(driver);
         this.helper = new Helper(driver);
         this.driver = driver;
     }
@@ -99,9 +101,6 @@ export class AddTaskPage {
         return this.driver.$('//android.widget.Button[@content-desc="Delete Task"]');
     }
 
-    get defaultTextListSelector(): ChainablePromiseElement {
-        return this.driver.$('//android.widget.TextView[@text="Default"]');
-    }
 
     /* ---------------- ACTIONS / ASSERTIONS ---------------- */
 
@@ -243,7 +242,11 @@ export class AddTaskPage {
     }
 
     async clickDefaultTextListDropDown() {
-        await this.helper.click(this.defaultTextListSelector);
+        await this.helper.click(this.defaultTextSelector);
+    }
+
+    async assertAllListDropdown(expectedItems: string[]) {
+        await this.assertDropdown('Default', expectedItems);
     }
 
 

@@ -139,6 +139,8 @@ devices.forEach(device => {
             await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
             await addTaskPage.clickDefaultTextListDropDown();
 
+            const expectedItems = ['Default', 'Personal', 'Shopping', 'Wishlist', 'Work'];
+            await addTaskPage.assertAllListDropdown(expectedItems);
 
             // await addTaskPage.clickSaveTaskButton();
             // await addTaskPage.clickSearchIcon();
