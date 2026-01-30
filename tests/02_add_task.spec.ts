@@ -145,10 +145,14 @@ devices.forEach(device => {
             const selectedList = await addTaskPage.selectRandomTaskList(['Default']);
             console.log("FUCking selected Task List ::: ", selectedList);
 
-            // await addTaskPage.clickSaveTaskButton();
-            // await addTaskPage.clickSearchIcon();
-            // await addTaskPage.enterSearchText(taskName);
-            // await addTaskPage.assertSearchResult(taskName);
+            await addTaskPage.clickSaveTaskButton();
+            await addTaskPage.clickSearchIcon();
+
+            await addTaskPage.enterSearchText(taskName);
+            await addTaskPage.assertSearchResult(taskName);
+            await addTaskPage.clickSearchedTask();
+
+
 
         });
 
