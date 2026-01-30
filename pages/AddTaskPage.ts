@@ -278,4 +278,11 @@ export class AddTaskPage extends BasePage {
     }
 
 
+    async assertDynamicTaskList(expectedText: string) {
+        const element = await this.driver.$(
+            `//android.widget.TextView[@text="${expectedText}"]`
+        );
+        await this.helper.assertText(element, expectedText);
+    }
+
 }

@@ -151,7 +151,7 @@ devices.forEach(device => {
             await addTaskPage.enterSearchText(taskName);
             await addTaskPage.assertSearchResult(taskName);
             await addTaskPage.clickSearchedTask();
-
+            await addTaskPage.assertDynamicTaskList(selectedList);
 
 
         });
