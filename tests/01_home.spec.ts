@@ -36,25 +36,25 @@ devices.forEach(device => {
             await quitDriver(driver);
         });
 
-        it('should display expected task lists on the home screen', async () => {
+        it('@smoke should display expected task lists on the home screen', async () => {
             await homePage.assertAllListsText('All Lists');
             await homePage.assertNothingToDoText('Nothing to do');
             await homePage.assertQuickTaskPlaceholder('Enter Quick Task Here');
         });
 
-        it('should show all task lists in the task list dropdown', async () => {
+        it('@sanity should show all task lists in the task list dropdown', async () => {
             await homePage.clickAllListsMenu();
             const expectedItems = ['All Lists', 'Default', 'Personal', 'Shopping', 'Wishlist', 'Work', 'Finished', 'New List'];
             await homePage.assertAllListDropdown(expectedItems);
         });
 
-        it('should display all task lists in the more options menu', async () => {
+        it('@sanity should display all task lists in the more options menu', async () => {
             await homePage.clickMoreOptionMenu();
             const expectedItems = ['Task Lists', 'Add in Batch Mode', 'Remove Ads', 'Send feedback', 'Follow us', 'Invite friends to the app', 'Settings'];
             await homePage.assertMoreOptionItems(expectedItems);
         });
 
-        it('should create a new task list and display it across the app', async () => {
+        it('@regression should create a new task list and display it across the app', async () => {
             await homePage.clickAllListsMenu();
             await homePage.clickNewListText();
             await homePage.assertNewListTextTitle('New List');
@@ -77,7 +77,7 @@ devices.forEach(device => {
 
         });
 
-        it('should allow creating a task list from the more options menu', async () => {
+        it('@regression should allow creating a task list from the more options menu', async () => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickTaskLists();
             await homePage.clickHamburgerMenu();
@@ -96,7 +96,7 @@ devices.forEach(device => {
             await homePage.assertTaskNameFromDropdown(listName);
         });
 
-        it('should allow renaming an existing task list', async () => {
+        it('@regression should allow renaming an existing task list', async () => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickTaskLists();
             await homePage.clickHamburgerMenu();
@@ -121,7 +121,7 @@ devices.forEach(device => {
 
         })
 
-        it('should delete an existing task list and remove it from the app', async () => {
+        it('@regression should delete an existing task list and remove it from the app', async () => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickTaskLists();
             await homePage.clickHamburgerMenu();
@@ -138,7 +138,7 @@ devices.forEach(device => {
 
         });
 
-        it('should create the quick task', async () => {
+        it('@smoke should create the quick task', async () => {
             await homePage.clickQuickTaskButton();
             const taskName = generateTaskName();
             await homePage.enterQuickTaskName(taskName);
@@ -149,7 +149,7 @@ devices.forEach(device => {
         });
 
 
-        it.only("should create the task in the batch mode and save successfully without filling other data.", async () => {
+        it('@regression should create the task in the batch mode and save successfully without filling other data.', async () => {
             await homePage.clickMoreOptionMenu();
             await homePage.clickAddInBatchMode();
             await homePage.assertWhatIsToBeDoneText('What is to be done?');

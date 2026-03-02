@@ -38,7 +38,7 @@ devices.forEach(device => {
             await quitDriver(driver);
         });
 
-        it('should display all required fields on the Add New Task screen', async () => {
+        it('@sanity should display all required fields on the Add New Task screen', async () => {
             await homePage.clickAddTask();
             await addTaskPage.assertNewTaskName("New Task");
             await addTaskPage.assertToBeDoneText("What is to be done?");
@@ -52,13 +52,13 @@ devices.forEach(device => {
         });
 
 
-        it('should show a validation error when saving a task without a name', async () => {
+        it('@sanity should show a validation error when saving a task without a name', async () => {
             await homePage.clickAddTask();
             await addTaskPage.clickSaveTaskButton();
             await addTaskPage.assertValidationMessage("Enter task at first");
         });
 
-        it('should create a new task with due date and notification successfully', async () => {
+        it('@smoke should create a new task with due date and notification successfully', async () => {
             await homePage.clickAddTask();
 
             const taskName = generateTaskName();
@@ -77,7 +77,7 @@ devices.forEach(device => {
             await addTaskPage.clickMinuteSelector();
             await addTaskPage.clickOkButton();
 
-            await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 AM.");
+            await addTaskPage.assertDaySummaryText("Day summary on the same day at 8:00 am.");
             await addTaskPage.assertIndividualNotificationText("Individual notification on time.");
             await addTaskPage.clickSaveTaskButton();
             await addTaskPage.clickSearchIcon();
@@ -86,7 +86,7 @@ devices.forEach(device => {
 
         });
 
-        it('should create a new task with due date and notification successfully ,Delete it and assert deleted successfully...', async () => {
+        it('@regressionshould create a new task with due date and notification successfully ,Delete it and assert deleted successfully...', async () => {
             await homePage.clickAddTask();
 
             const taskName = generateTaskName();
@@ -116,7 +116,7 @@ devices.forEach(device => {
             await homePage.assertNothingToDoText(listNameAssertion);
         });
 
-        it.only('should create a new task with due date and notification and dynamic task list', async () => {
+        it('@regression should create a new task with due date and notification and dynamic task list', async () => {
             await homePage.clickAddTask();
 
             const taskName = generateTaskName();
@@ -155,7 +155,6 @@ devices.forEach(device => {
 
 
         });
-
 
     });
 
