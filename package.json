@@ -12,7 +12,8 @@
     "clean:allure": "rm -rf allure-results allure-report",
     "smoke": "mocha -r ts-node/register --grep @smoke --reporter mocha-multi-reporters --reporter-options configFile=mocha-reporter-config.json tests/**/*.spec.ts",
     "sanity": "mocha -r ts-node/register --grep @sanity --reporter mocha-multi-reporters --reporter-options configFile=mocha-reporter-config.json tests/**/*.spec.ts",
-    "regression": "mocha -r ts-node/register --grep @regression --reporter mocha-multi-reporters --reporter-options configFile=mocha-reporter-config.json tests/**/*.spec.ts"
+    "regression": "mocha -r ts-node/register --grep @regression --reporter mocha-multi-reporters --reporter-options configFile=mocha-reporter-config.json tests/**/*.spec.ts",
+    "sanity_parallel": "mocha --parallel --jobs 2 -r ts-node/register --grep @sanity --reporter mocha-multi-reporters --reporter-options configFile=mocha-reporter-config.json tests/**/*.spec.ts"
   },
   "keywords": [],
   "author": "",
